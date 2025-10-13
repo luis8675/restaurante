@@ -23,9 +23,17 @@ public class Empleados extends javax.swing.JFrame {
 
 
     public Empleados() {
-        initComponents();
-        cmbEstado.setModel(new DefaultComboBoxModel<>(new String[]{"Activo", "Inactivo"}));
-    }
+    initComponents();
+
+    cmbCargo.removeAllItems();
+    cmbCargo.addItem("Jefe");
+    cmbCargo.addItem("Mesero/a");
+    cmbCargo.addItem("Cocinero/a");
+    cmbCargo.addItem("Seguridad");
+    cmbCargo.addItem("Cajero/a");
+
+    cmbEstado.setModel(new DefaultComboBoxModel<>(new String[]{"Activo", "Inactivo"}));
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,12 +64,12 @@ public class Empleados extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         lblCargo = new javax.swing.JLabel();
         btnConsultar = new javax.swing.JButton();
-        txtCargo = new javax.swing.JTextField();
         lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         cmbEstado = new javax.swing.JComboBox<>();
+        cmbCargo = new javax.swing.JComboBox<>();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -74,6 +82,12 @@ public class Empleados extends javax.swing.JFrame {
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
+            }
+        });
+
+        txtSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalarioActionPerformed(evt);
             }
         });
 
@@ -140,6 +154,17 @@ public class Empleados extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEstadoActionPerformed(evt);
+            }
+        });
+
+        cmbCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCargoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,18 +191,18 @@ public class Empleados extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(txtFechaIngreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSalario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtFechaIngreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtSalario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnEliminar)
@@ -199,25 +224,25 @@ public class Empleados extends javax.swing.JFrame {
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblID))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNombre))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblApellido))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblNombre))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblApellido))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblCargo))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblCargo)
+                            .addComponent(cmbCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblTelefono))
                                 .addGap(95, 95, 95))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblDireccion))
@@ -275,26 +300,39 @@ public class Empleados extends javax.swing.JFrame {
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
 
         try (Connection conn = new CreateConection().getConection()) {
-            String sql = "INSERT INTO empleados(empleado_id,nombre,apellido,cargo,telefono,direccion,estado,fecha_ingreso,salario,email) VALUES(?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement ps = conn.prepareStatement(sql);
+            String sql = "INSERT INTO empleados(nombre,apellido,cargo,telefono,direccion,estado,fecha_ingreso,salario,email) VALUES(?,?,?,?,?,?,?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
-            ps.setInt(1, Integer.parseInt(txtID.getText()));
-            ps.setString(2, txtNombre.getText());
-            ps.setString(3, txtApellido.getText());
-            ps.setString(4, txtCargo.getText());
-            ps.setString(5, txtTelefono.getText());
-            ps.setString(6, txtDireccion.getText());
-            ps.setBoolean(7, cmbEstado.getSelectedItem().toString().equalsIgnoreCase("Activo"));
+            ps.setString(1, txtNombre.getText());
+            ps.setString(2, txtApellido.getText());
+            ps.setString(3, cmbCargo.getSelectedItem().toString());
+            ps.setString(4, txtTelefono.getText());
+            ps.setString(5, txtDireccion.getText());
+            ps.setBoolean(6, cmbEstado.getSelectedItem().toString().equalsIgnoreCase("Activo"));
             java.sql.Date fechaSQL = java.sql.Date.valueOf(txtFechaIngreso.getText());
-            ps.setDate(8, fechaSQL);
-            ps.setDouble(9, Double.parseDouble(txtSalario.getText()));
-            ps.setString(10, txtEmail.getText());
-
-            JOptionPane.showMessageDialog(this, "Filas insertadas: " + ps.executeUpdate());
+            ps.setDate(7, fechaSQL);
+            ps.setDouble(8, Double.parseDouble(txtSalario.getText()));
+            ps.setString(9, txtEmail.getText());
+            
+        int filas = ps.executeUpdate();
+        if (filas > 0) {
+            // Obtener el ID generado automáticamente
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                int nuevoID = rs.getInt(1);
+                txtID.setText(String.valueOf(nuevoID)); // mostrarlo en el campo
+                JOptionPane.showMessageDialog(this, "Empleado insertado correctamente con ID: " + nuevoID);
+            } else {
+                JOptionPane.showMessageDialog(this, "Empleado insertado correctamente, pero no se pudo obtener el ID.");
+            }
             limpiarCampos();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Error al insertar: " + ex.getMessage());
+        } else {
+            JOptionPane.showMessageDialog(this, "No se insertó ningún registro.");
         }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al insertar empleado: " + e.getMessage());
+    }
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -304,7 +342,7 @@ public class Empleados extends javax.swing.JFrame {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, txtNombre.getText());
             ps.setString(2, txtApellido.getText());
-            ps.setString(3, txtCargo.getText());
+            ps.setString(3, cmbCargo.getSelectedItem().toString());
             ps.setString(4, txtTelefono.getText());
             ps.setString(5, txtDireccion.getText());
             ps.setBoolean(6, cmbEstado.getSelectedItem().toString().equalsIgnoreCase("Activo"));
@@ -335,7 +373,7 @@ public class Empleados extends javax.swing.JFrame {
             if (rs.next()) {
                 txtNombre.setText(rs.getString("nombre"));
                 txtApellido.setText(rs.getString("apellido"));
-                txtCargo.setText(rs.getString("cargo"));
+                cmbCargo.setSelectedItem(rs.getString("cargo"));
                 txtTelefono.setText(rs.getString("telefono"));
                 txtDireccion.setText(rs.getString("direccion"));
                 boolean estado = rs.getBoolean("estado");
@@ -358,11 +396,23 @@ public class Empleados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
+    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalarioActionPerformed
+
+    private void cmbCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCargoActionPerformed
+
+    private void cmbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbEstadoActionPerformed
+
     private void limpiarCampos() {
         txtID.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
-        txtCargo.setText("");
+        cmbCargo.setSelectedIndex(0);
         txtTelefono.setText("");
         txtDireccion.setText("");
         cmbEstado.setSelectedIndex(0);
@@ -392,6 +442,7 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInsertar;
+    private javax.swing.JComboBox<String> cmbCargo;
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
@@ -407,7 +458,6 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JLabel lblSalario;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtCargo;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFechaIngreso;
