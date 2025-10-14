@@ -229,7 +229,10 @@ public class Usuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-if (txtNombre_usuario.getText().isEmpty() || txtclave.getText().isEmpty() || 
+
+        if (!validarCampos()) return;
+        
+        if (txtNombre_usuario.getText().isEmpty() || txtclave.getText().isEmpty() || 
     txtNombre_completo.getText().isEmpty()) {
     JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos obligatorios.");
     return;
@@ -298,7 +301,10 @@ if (txtNombre_usuario.getText().isEmpty() || txtclave.getText().isEmpty() ||
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
-if (txtNombre_usuario.getText().isEmpty() || txtclave.getText().isEmpty() || 
+
+        if (!validarCampos()) return;
+        
+        if (txtNombre_usuario.getText().isEmpty() || txtclave.getText().isEmpty() || 
     txtNombre_completo.getText().isEmpty()) {
     JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos obligatorios.");
     return;
@@ -342,6 +348,66 @@ if (txtNombre_usuario.getText().isEmpty() || txtclave.getText().isEmpty() ||
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbEstadoActionPerformed
 
+    
+    private boolean validarCampos() {
+  
+    if (txtNombre_usuario.getText().isEmpty() || 
+        txtNombre_completo.getText().isEmpty() || 
+        txtclave.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos obligatorios.");
+        return false;
+    }
+
+    if (txtNombre_usuario.getText().length() < 4) {
+        JOptionPane.showMessageDialog(this, "El nombre de usuario debe tener al menos 4 caracteres.");
+        return false;
+    }
+
+    if (txtclave.getText().length() < 4) {
+        JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 6 caracteres.");
+        return false;
+    }
+
+    if (!txtNombre_usuario.getText().matches("[a-zA-Z0-9_]+")) {
+        JOptionPane.showMessageDialog(this, "El nombre de usuario solo puede contener letras, números y guiones bajos.");
+        return false;
+    }
+
+    if (!txtNombre_completo.getText().matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+        JOptionPane.showMessageDialog(this, "El nombre completo solo puede contener letras y espacios.");
+        return false;
+    }
+
+    if (cmbCargo.getSelectedIndex() == -1) {
+        JOptionPane.showMessageDialog(this, "Selecciona un cargo válido.");
+        return false;
+    }
+
+    if (cmbEstado.getSelectedIndex() == -1) {
+        JOptionPane.showMessageDialog(this, "Selecciona un estado válido.");
+        return false;
+    }
+
+    if (txtuserID.getText().isEmpty()) { // si es nuevo usuario
+        try (Connection conn = new CreateConection().getConection()) {
+            String sqlCheck = "SELECT COUNT(*) FROM usuarios WHERE nombre_usuario=?";
+            PreparedStatement psCheck = conn.prepareStatement(sqlCheck);
+            psCheck.setString(1, txtNombre_usuario.getText());
+            ResultSet rs = psCheck.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                JOptionPane.showMessageDialog(this, "El nombre de usuario ya existe, elige otro.");
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al verificar usuario: " + e.getMessage());
+            return false;
+        }
+    }
+
+    return true;
+}
+
+    
         private void limpiarCampos() {
         txtuserID.setText("");
         txtNombre_usuario.setText("");
