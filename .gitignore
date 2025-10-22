@@ -1,0 +1,9 @@
+### NetBeans ###
+**/nbproject/privado/
+**/nbproject/Makefile-*.mk
+**/nbproject/Paquete-*.bash
+construir/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
