@@ -36,6 +36,10 @@ public class CreateConection {
     
     // Objeto Properties donde se guardan las configuraciones de conexión
     static Properties config = new Properties();
+
+    public static Connection getConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     // Variables que almacenarán los valores leídos desde el archivo de configuración
     String hostname = null;

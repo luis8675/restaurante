@@ -4,17 +4,36 @@
  */
 package proyectofinalprogra;
 
-import Restaurante.Empleados;
+import Restaurante.loggin;
+import javax.swing.UIManager;
+import javax.swing.SwingUtilities;
+
 
 /**
  *
  * @author 50242
  */
+
 public class Proyectofinalprogra {
     public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(() -> {
-            Empleados frm = new Empleados();
+        // Aplicar Look and Feel Nimbus globalmente
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("No se pudo aplicar Nimbus: " + e.getMessage());
+        }
+
+        // Iniciar la aplicación desde el login
+        SwingUtilities.invokeLater(() -> {
+            loggin frm = new loggin();
+            frm.setLocationRelativeTo(null); // Centra la ventana
             frm.setVisible(true);
         });
     }
 }
+

@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Date;
-public class Clientes extends javax.swing.JFrame {
+public class Clientes extends javax.swing.JInternalFrame {
     
     CreateConection  conexionpostgres = new CreateConection();
     Connection con;
@@ -21,6 +21,10 @@ public class Clientes extends javax.swing.JFrame {
     public Clientes() throws SQLException {
         initComponents();
             con=conexionpostgres.getConection();
+        this.setClosable(true);
+        this.setMaximizable(true);
+        this.setIconifiable(true);
+        this.setResizable(true);
     }
 
     
@@ -401,17 +405,7 @@ try (Connection conn = new CreateConection().getConection()) {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new Clientes().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegistrar;
@@ -433,4 +427,4 @@ try (Connection conn = new CreateConection().getConection()) {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
-}
+}  
