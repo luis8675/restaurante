@@ -16,7 +16,6 @@ import javax.swing.SwingUtilities;
 
 public class Proyectofinalprogra {
     public static void main(String[] args) {
-        // Aplicar Look and Feel Nimbus globalmente
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

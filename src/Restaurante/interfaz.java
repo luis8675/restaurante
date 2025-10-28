@@ -24,6 +24,8 @@ public class interfaz extends JFrame {
     private Gestión_de_Productos gdp;
     private Usuarios us;
     private Proveedores pr;
+    private Facturas fa;
+    private Reportes re;
 
     public interfaz() {
         initComponents();
@@ -44,6 +46,8 @@ public class interfaz extends JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,7 +111,24 @@ public class interfaz extends JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Reportes/Facturas");
+        jMenu2.setText("Pedidos/Facturas");
+
+        jMenuItem6.setText("Pedidos");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
+
+        jMenuItem7.setText("Reportes");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -207,6 +228,34 @@ public class interfaz extends JFrame {
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+
+        if (fa == null || fa.isClosed()) {
+            fa = new Facturas();
+            jDesktopPane1.add(fa);
+            fa.setVisible(true);
+        } else {
+            fa.toFront();
+        }
+
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+
+        try {
+            if (re == null || re.isClosed()) {
+                re = new Reportes();
+                configurarInternalFrame(re);
+            } else {
+                re.toFront();
+                re.setSelected(true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     private void configurarInternalFrame(JInternalFrame frame) {
         frame.setClosable(true);
         frame.setMaximizable(true);
@@ -250,5 +299,7 @@ public class interfaz extends JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
 }
