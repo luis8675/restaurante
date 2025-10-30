@@ -95,6 +95,7 @@ public class Empleados extends javax.swing.JInternalFrame {
 
         jToggleButton1.setText("jToggleButton1");
 
+        setBackground(new java.awt.Color(245, 245, 220));
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblApellido.setText("Apellido");

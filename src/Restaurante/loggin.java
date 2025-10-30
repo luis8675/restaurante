@@ -45,6 +45,7 @@ public class loggin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BIENVENIDO");
+        setForeground(java.awt.Color.gray);
 
         lblNombre_usuario.setText("Nombre usuario");
 
@@ -107,7 +108,7 @@ public class loggin extends javax.swing.JFrame {
                     .addComponent(txtclave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addComponent(jButton1)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
